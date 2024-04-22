@@ -1,14 +1,14 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv(r'historico-alg1_SIGA_ANONIMIZADO.csv')
+df = pd.read_csv(r'C:\Users\Mikael\Desktop\pos\pos_cd_bd\lig.programacao\historico-alg1_SIGA_ANONIMIZADO.csv')
 
 print("#1. Qual a média da nota dos aprovados? No período total e por ano\n")
 
 # Filtrando o df, retirando as equivalencias e calculando as médias.
 df_aprovados = df[(df['status'] == 'Aprovado') & (df['tipo'] != 'EQUIVALENCIA')]
 media_aprovados = df_aprovados['nota'].mean()
-print(f"A média da nota dos aprovados no período total é de: {media_aprovados:.2f}%\n")
+print(f"A média da nota dos aprovados no período total é de: {media_aprovados:.2f}\n")
 df_aprovados_gb = df_aprovados.groupby('ano').agg({'nota':'mean'}).reset_index()
 print("Segue o dataframe com as notas média por ano dos aprovados: \n", df_aprovados_gb)
 
@@ -17,7 +17,7 @@ print("\n#2. Qual é a média de nota dos reprovados por nota (período total e 
 #Criando o df de reprovados e calculando as médias;
 df_reprovados = df[df['status'] == 'R-nota']
 media_reprovados = df_reprovados['nota'].mean()
-print(f"A média da nota dos reprovados no período total é de: {media_reprovados:.2f}%\n")
+print(f"A média da nota dos reprovados no período total é de: {media_reprovados:.2f}\n")
 df_reprovados_gb = df_reprovados.groupby('ano').agg({'nota':'mean'}).reset_index()
 print("Segue o dataframe com as notas média por ano dos aprovados: \n", df_reprovados_gb)
 
@@ -37,7 +37,6 @@ df['situacaoDiscente'].value_counts('Evasão')
 print("Porcentagem de evasões totais: 15,62%\n")
 
 df_grouped_2 = df.groupby('ano')['situacaoDiscente'].value_counts(normalize=True)
-print(df_grouped_2)
 print("Porcentagem das evasões por ano: \n2013: 63,63%\n 2014: 23,07%\n 2015: 20%\n 2016: 15,09%\n 2017: 18,47%\n 2018: 22,91%\n 2019: 16,38%\n 2020: 17,92%\n 2021: 12,31%\n 2022: 2,45%\n")
 
 print("#5. Como os anos de pandemia impactaram no rendimento dos estudantes em relação aos anos anteriores, considerando o rendimento dos aprovados, a taxa de cancelamento e as reprovações? Considere como anos de pandemia os anos de 2020 e 2021.\n# 6- Compare a volta às aulas híbrida (2022 período 1) com os anos de pandemia e os anos anteriores.\n")
