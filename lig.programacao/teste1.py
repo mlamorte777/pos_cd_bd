@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv(r'C:\Users\Mikael\Desktop\pos\pos_cd_bd\lig.programacao\historico-alg1_SIGA_ANONIMIZADO.csv')
+df = pd.read_csv('historico-alg1_SIGA_ANONIMIZADO.csv')
 
 print("#1. Qual a média da nota dos aprovados? No período total e por ano\n")
 
@@ -40,7 +40,7 @@ df_grouped_2 = df.groupby('ano')['situacaoDiscente'].value_counts(normalize=True
 print("Porcentagem das evasões por ano: \n2013: 63,63%\n 2014: 23,07%\n 2015: 20%\n 2016: 15,09%\n 2017: 18,47%\n 2018: 22,91%\n 2019: 16,38%\n 2020: 17,92%\n 2021: 12,31%\n 2022: 2,45%\n")
 
 print("#5. Como os anos de pandemia impactaram no rendimento dos estudantes em relação aos anos anteriores, considerando o rendimento dos aprovados, a taxa de cancelamento e as reprovações? Considere como anos de pandemia os anos de 2020 e 2021.\n# 6- Compare a volta às aulas híbrida (2022 período 1) com os anos de pandemia e os anos anteriores.\n")
-
+print("Nos gráficos é possível comparar os anos anteriores com os anos de pandemia e com o primeiro periodo de 2021, não existem dados de 2021.2, pois é um periodo 'em andamento'.\n")
 #Plotando os gráficos.
 def plot_line(df,x,y,titulo):
     fig = px.line(df, x = x, y= y, markers = True)
@@ -58,8 +58,6 @@ plot_line(df_gb, 'ano', 'status', 'Taxa de cancelamento')
 df_reprovados_2 = df[(df['status'] == 'R-nota') | (df['status'] == 'R-freq')]
 df_reprovados_2 = df_reprovados_2.groupby('ano').agg({'status':'count'}).reset_index()
 plot_line(df_reprovados_2, 'ano', 'status', 'Reprovações por ano')
-
-print('As perguntas 5 e 6 foram respondidas juntas. E não é possível responder a pergunta 7 pela falta de dados.')
 
 
 
