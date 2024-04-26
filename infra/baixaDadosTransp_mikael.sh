@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Este exemplo baixa os dados dos cinco primeiros dias de um determinado mês e ano
+# Este exemplo baixa os dados dos dias de um determinado mês e ano
 # que são passados como parâmetros para o script
-# Um exemple de execução do script é: ./baixaDadosTransp.sh 05 2015
+# Um exemple de execução do script é: ./baixaDadosTransp.sh 01 10 05 2015
+# Sendo respeita a seguinte ordem: dia de inicio do periodo, dia final do periodo, mes e ano.
 
 # Indicando qual o endereço do site
 siteDownload="https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas"
