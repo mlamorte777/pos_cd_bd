@@ -1,8 +1,9 @@
+# Pi Paralelo
 from multiprocessing import Process
 import time
-procs = 3
+procs = 6
 
-# Pi Paralelo
+
 def pi_p(start, end, step):
     print("Start: ", str(start))
     print("End: ", str(end))
@@ -13,7 +14,7 @@ def pi_p(start, end, step):
     print(sum)
 
 if __name__ == '__main__':
-    num_steps = 10_000_000_00
+    num_steps = 10_000_000_0
     sums = 0.0
     step = 1.0/num_steps
     proc_size = num_steps // procs

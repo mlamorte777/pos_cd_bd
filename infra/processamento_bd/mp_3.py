@@ -1,5 +1,6 @@
-import time
 # Pi Sequencial
+import time
+
 def pi_naive(start, end, step):
     print("Start: ", str(start))
     print("End: ", str(end))
